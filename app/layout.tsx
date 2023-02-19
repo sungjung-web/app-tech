@@ -1,7 +1,7 @@
-import Gtag from '@/components/Gtag';
 import PreLoadColor from '@/components/PreLoadColor';
 import * as gtag from '@/utils/gtag';
 import Script from 'next/script';
+import { AnalyticsWrapper, Gtag } from './components';
 import './globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -33,9 +33,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <Gtag />
-        <PreLoadColor />
         {children}
+        <Gtag />
+        <AnalyticsWrapper />
+        <PreLoadColor />
       </body>
     </html>
   );
