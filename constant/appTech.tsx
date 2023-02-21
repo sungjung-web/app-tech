@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 export enum APP_TECH_TYPE {
   클릭 = '클릭',
   미션 = '미션',
@@ -14,7 +16,10 @@ export type AppTechItem = {
   title: string;
   image: string;
   types: APP_TECH_TYPE[];
+  searchLink?: { title: string; link: string };
 };
+
+const today = format(new Date(), 'M월 dd일');
 
 export const APP_TECH_LIST = [
   {
@@ -29,6 +34,20 @@ export const APP_TECH_LIST = [
       APP_TECH_TYPE.퀴즈,
       APP_TECH_TYPE.설문조사,
     ],
+    searchLink: {
+      title: '행운퀴즈 정답보기',
+      link: `https://search.naver.com/search.naver?where=view&sm=tab_jum&query=${today}+토스+행운퀴즈`,
+    },
+  },
+  {
+    id: 'ok_cashback',
+    title: 'OK 캐쉬백',
+    image: '/app_icon/ok_cashback.webp',
+    types: [APP_TECH_TYPE.클릭, APP_TECH_TYPE.미션, APP_TECH_TYPE.만보기, APP_TECH_TYPE.퀴즈],
+    searchLink: {
+      title: '오퀴즈 정답보기',
+      link: `https://search.naver.com/search.naver?where=view&sm=tab_jum&query=${today}+ok캐쉬백+오퀴즈`,
+    },
   },
   {
     id: 'cash_walk',
@@ -59,12 +78,6 @@ export const APP_TECH_LIST = [
     title: '네이버',
     image: '/app_icon/naver.webp',
     types: [APP_TECH_TYPE.영수증, APP_TECH_TYPE.클릭],
-  },
-  {
-    id: 'ok_cashback',
-    title: 'OK 캐쉬백',
-    image: '/app_icon/ok_cashback.webp',
-    types: [APP_TECH_TYPE.클릭, APP_TECH_TYPE.미션, APP_TECH_TYPE.만보기, APP_TECH_TYPE.퀴즈],
   },
   {
     id: 'm_brain',
